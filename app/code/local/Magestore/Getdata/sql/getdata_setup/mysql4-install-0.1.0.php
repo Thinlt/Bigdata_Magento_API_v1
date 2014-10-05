@@ -1,18 +1,18 @@
 <?php
 /**
  * Magestore
- * 
+ *
  * NOTICE OF LICENSE
- * 
+ *
  * This source file is subject to the Magestore.com license that is
  * available through the world-wide-web at this URL:
  * http://www.magestore.com/license-agreement.html
- * 
+ *
  * DISCLAIMER
- * 
+ *
  * Do not edit or add to this file if you wish to upgrade this extension to newer
  * version in the future.
- * 
+ *
  * @category    Magestore
  * @package     Magestore_Getdata
  * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
@@ -96,7 +96,7 @@ DROP TABLE IF EXISTS {$this->getTable('getdata_viewproduct')};
 CREATE TABLE {$this->getTable('getdata_viewproduct')} (
 	`viewproduct_id` bigint(20) unsigned NOT NULL auto_increment,
 	`product_id` int(11) unsigned NOT NULL,
-	`user_id` int(11) unsigned NOT NULL, 
+	`user_id` int(11) unsigned NOT NULL,
 	`visitor_id` bigint(20) unsigned NOT NULL,
 	`start_viewed_time` datetime NULL,
 	`end_viewed_time` datetime NULL,
@@ -109,7 +109,7 @@ DROP TABLE IF EXISTS {$this->getTable('getdata_visitor')};
 CREATE TABLE {$this->getTable('getdata_visitor')} (
 	`visitor_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
 	`session_id` varchar(64) NOT NULL,
-	`first_visit_time` datetime  NOT NULL, 
+	`first_visit_time` datetime  NOT NULL,
 	`last_visit_time` datetime  NOT NULL,
 	`last_url_id` bigint(10) unsigned NULL,
 	`http_referer` varchar(255) NULL,
@@ -124,23 +124,35 @@ CREATE TABLE {$this->getTable('getdata_visitoruser')} (
 	`visitoruser_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
 	`visitor_id` bigint(20) unsigned NOT NULL,
 	`user_id` int(11) unsigned NOT NULL,
-	`login_time` datetime  NOT NULL, 
+	`login_time` datetime  NOT NULL,
 	`logout_time` datetime  NOT NULL,
 	UNIQUE(`visitor_id`, `user_id`),
 	PRIMARY KEY (`visitoruser_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+DROP TABLE IF EXISTS {$this->getTable('getdata_data_processing')};
+CREATE TABLE {$this->getTable('getdata_data_processing')} (
+    `processing_id` int(3) unsigned NOT NULL AUTO_INCREMENT,
+	`data_table` varchar(255) NULL,
+	`record_no` int(11) unsigned NULL,
+	`records_increment` int(11) unsigned NULL,
+	`records_totals` int(11) unsigned NULL,
+	`updated_at` datetime  NULL,
+	PRIMARY KEY (`processing_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 ");
 
-$hepler = Mage::helper('getdata');
-
-$hepler->getProducts();
-$hepler->getUsers();
-$hepler->getReviews();
-$hepler->getOrders();
-$hepler->getVisitors();
-$hepler->getChangeCarts();
-$hepler->getProductViews();
-$hepler->getVisitorUsers();
+//$hepler = Mage::helper('getdata');
+//
+//$hepler->getProducts();
+//$hepler->getUsers();
+//$hepler->getReviews();
+//$hepler->getOrders();
+//$hepler->getVisitors();
+//$hepler->getChangeCarts();
+//$hepler->getProductViews();
+//$hepler->getVisitorUsers();
 $installer->endSetup();
 

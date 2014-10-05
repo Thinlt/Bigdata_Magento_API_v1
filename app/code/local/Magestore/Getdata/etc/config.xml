@@ -2,18 +2,18 @@
 <!--
 /**
  * Magestore
- * 
+ *
  * NOTICE OF LICENSE
- * 
+ *
  * This source file is subject to the Magestore.com license that is
  * available through the world-wide-web at this URL:
  * http://www.magestore.com/license-agreement.html
- * 
+ *
  * DISCLAIMER
- * 
+ *
  * Do not edit or add to this file if you wish to upgrade this extension to newer
  * version in the future.
- * 
+ *
  * @category    Magestore
  * @package     Magestore_Getdata
  * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
@@ -81,7 +81,7 @@
                 </Magestore_Getdata>
             </modules>
         </translate>
-    </adminhtml>   
+    </adminhtml>
     <global>
         <models>
             <getdata>
@@ -99,6 +99,7 @@
 					<changecart><table>getdata_changecart</table></changecart>
 					<viewproduct><table>getdata_viewproduct</table></viewproduct>
 					<visitoruser><table>getdata_visitoruser</table></visitoruser>
+                    <processing><table>getdata_data_processing</table></processing>
                 </entities>
             </getdata_mysql4>
         </models>
@@ -141,7 +142,7 @@
                     </getdata_observers>
                 </observers>
 			</controller_action_predispatch>
-			
+
 			<controller_action_postdispatch>
 				<observers>
                     <getdata_observers>
@@ -150,7 +151,7 @@
                     </getdata_observers>
                 </observers>
 			</controller_action_postdispatch>
-           	
+
 			<sales_quote_remove_item>
                 <observers>
                     <getdata_observers>
@@ -159,7 +160,7 @@
                     </getdata_observers>
                 </observers>
             </sales_quote_remove_item>
-			
+
 			<sales_order_place_after>
 				<observers>
                     <getdata_observers>
@@ -168,7 +169,7 @@
                     </getdata_observers>
                 </observers>
 			</sales_order_place_after>
-			
+
 			<checkout_cart_add_product_complete>
 				<observers>
                     <getdata_observers>
@@ -177,7 +178,7 @@
                     </getdata_observers>
                 </observers>
 			</checkout_cart_add_product_complete>
-			
+
 			<customer_login>
 				<observers>
                     <getdata_observers>
@@ -186,7 +187,7 @@
                     </getdata_observers>
                 </observers>
 			</customer_login>
-			
+
 			<customer_logout>
 				<observers>
                     <getdata_observers>
@@ -195,7 +196,7 @@
                     </getdata_observers>
                 </observers>
 			</customer_logout>
-			
+
 			<review_save_after>
 				<observers>
                     <getdata_observers>
