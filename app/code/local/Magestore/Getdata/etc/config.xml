@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magestore
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category    Magestore
+ * @package     Magestore_Getdata
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<config>
+    <modules>
+        <Magestore_Getdata>
+            <version>0.1.0</version>
+        </Magestore_Getdata>
+    </modules>
+    <frontend>
+        <routers>
+            <getdata>
+                <use>standard</use>
+                <args>
+                    <module>Magestore_Getdata</module>
+                    <frontName>getdata</frontName>
+                </args>
+            </getdata>
+        </routers>
+        <layout>
+            <updates>
+                <getdata>
+                    <file>getdata.xml</file>
+                </getdata>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Magestore_Getdata>
+                    <files>
+                        <default>Magestore_Getdata.csv</default>
+                    </files>
+                </Magestore_Getdata>
+            </modules>
+        </translate>
+    </frontend>
+    <admin>
+        <routers>
+            <getdataadmin>
+                <use>admin</use>
+                <args>
+                    <module>Magestore_Getdata</module>
+                    <frontName>getdataadmin</frontName>
+                </args>
+            </getdataadmin>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <getdata>
+                    <file>getdata.xml</file>
+                </getdata>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Magestore_Getdata>
+                    <files>
+                        <default>Magestore_Getdata.csv</default>
+                    </files>
+                </Magestore_Getdata>
+            </modules>
+        </translate>
+    </adminhtml>   
+    <global>
+        <models>
+            <getdata>
+                <class>Magestore_Getdata_Model</class>
+                <resourceModel>getdata_mysql4</resourceModel>
+            </getdata>
+            <getdata_mysql4>
+                <class>Magestore_Getdata_Model_Mysql4</class>
+                <entities>
+                    <user><table>getdata_user</table></user>
+					<visitor><table>getdata_visitor</table></visitor>
+					<product><table>getdata_product</table></product>
+					<review><table>getdata_review</table></review>
+					<order><table>getdata_order</table></order>
+					<changecart><table>getdata_changecart</table></changecart>
+					<viewproduct><table>getdata_viewproduct</table></viewproduct>
+					<visitoruser><table>getdata_visitoruser</table></visitoruser>
+                </entities>
+            </getdata_mysql4>
+        </models>
+        <resources>
+            <getdata_setup>
+                <setup>
+                    <module>Magestore_Getdata</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </getdata_setup>
+            <getdata_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </getdata_write>
+            <getdata_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </getdata_read>
+        </resources>
+        <blocks>
+            <getdata>
+                <class>Magestore_Getdata_Block</class>
+            </getdata>
+        </blocks>
+        <helpers>
+            <getdata>
+                <class>Magestore_Getdata_Helper</class>
+            </getdata>
+        </helpers>
+        <events>
+			<controller_action_predispatch>
+				<observers>
+                    <getdata_observers>
+                        <class>getdata/observer</class>
+                        <method>controllerActionPredispatch</method>
+                    </getdata_observers>
+                </observers>
+			</controller_action_predispatch>
+			
+			<controller_action_postdispatch>
+				<observers>
+                    <getdata_observers>
+                        <class>getdata/observer</class>
+                        <method>controllerActionPostdispatch</method>
+                    </getdata_observers>
+                </observers>
+			</controller_action_postdispatch>
+           	
+			<sales_quote_remove_item>
+                <observers>
+                    <getdata_observers>
+                        <class>getdata/observer</class>
+                        <method>removeItem</method>
+                    </getdata_observers>
+                </observers>
+            </sales_quote_remove_item>
+			
+			<sales_order_place_after>
+				<observers>
+                    <getdata_observers>
+                        <class>getdata/observer</class>
+                        <method>placeOrder</method>
+                    </getdata_observers>
+                </observers>
+			</sales_order_place_after>
+			
+			<checkout_cart_add_product_complete>
+				<observers>
+                    <getdata_observers>
+                        <class>getdata/observer</class>
+                        <method>addItem</method>
+                    </getdata_observers>
+                </observers>
+			</checkout_cart_add_product_complete>
+			
+			<customer_login>
+				<observers>
+                    <getdata_observers>
+                        <class>getdata/observer</class>
+                        <method>customerLogin</method>
+                    </getdata_observers>
+                </observers>
+			</customer_login>
+			
+			<customer_logout>
+				<observers>
+                    <getdata_observers>
+                        <class>getdata/observer</class>
+                        <method>customerLogout</method>
+                    </getdata_observers>
+                </observers>
+			</customer_logout>
+			
+			<review_save_after>
+				<observers>
+                    <getdata_observers>
+                        <class>getdata/observer</class>
+                        <method>reviewSaveAfter</method>
+                    </getdata_observers>
+                </observers>
+			</review_save_after>
+			<customer_register_success>
+				<observers>
+                    <getdata_observers>
+                        <class>getdata/observer</class>
+                        <method>customerRegister</method>
+                    </getdata_observers>
+                </observers>
+			</customer_register_success>
+			<adminhtml_customer_save_after>
+				<observers>
+                    <getdata_observers>
+                        <class>getdata/observer</class>
+                        <method>customerRegister</method>
+                    </getdata_observers>
+                </observers>
+			</adminhtml_customer_save_after>
+			<catalog_product_save_after>
+				<observers>
+                    <getdata_observers>
+                        <class>getdata/observer</class>
+                        <method>productSave</method>
+                    </getdata_observers>
+                </observers>
+			</catalog_product_save_after>
+        </events>
+    </global>
+</config>

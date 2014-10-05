@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magestore
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category    Magestore
+ * @package     Magestore_Getdata
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<config>
+    <menu>
+        <getdata module="getdata" translate="title">
+            <title>Getdata</title>
+            <sort_order>71</sort_order>
+            <children>
+                <user module="getdata" translate="title">
+					<title>Manage Users</title>
+					<sort_order>10</sort_order>
+					<action>getdataadmin/adminhtml_user</action>
+				</user>
+				<product module="getdata" translate="title">
+					<title>Manage Products</title>
+					<sort_order>20</sort_order>
+					<action>getdataadmin/adminhtml_product</action>
+				</product>
+				<review module="getdata" translate="title">
+					<title>Manage Reviews</title>
+					<sort_order>30</sort_order>
+					<action>getdataadmin/adminhtml_review</action>
+				</review>
+				<checkout module="getdata" translate="title">
+					<title>Manage Checkouts</title>
+					<sort_order>40</sort_order>
+					<action>getdataadmin/adminhtml_checkout</action>
+				</checkout>
+				<changecart module="getdata" translate="title">
+					<title>Manage Changecarts</title>
+					<sort_order>50</sort_order>
+					<action>getdataadmin/adminhtml_changecart</action>
+				</changecart>
+				<viewproduct module="getdata" translate="title">
+					<title>Manage Viewproducts</title>
+					<sort_order>60</sort_order>
+					<action>getdataadmin/adminhtml_viewproduct</action>
+				</viewproduct>
+				
+                <settings module="getdata" translate="title">
+                    <title>Settings</title>
+                    <sort_order>1000</sort_order>
+                    <action>adminhtml/system_config/edit/section/getdata</action>
+                </settings>
+            </children>
+        </getdata>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <getdata module="getdata" translate="title">
+                                        <title>Getdata</title>
+                                        <sort_order>71</sort_order>
+                                    </getdata>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <getdata module="getdata" translate="title">
+                        <title>Getdata</title>
+                        <sort_order>71</sort_order>
+                        <children>
+                            <user module="getdata" translate="title">
+								<title>Manage Users</title>
+								<sort_order>10</sort_order>
+							</user>
+							<product module="getdata" translate="title">
+								<title>Manage Products</title>
+								<sort_order>20</sort_order>
+							</product>
+							<review module="getdata" translate="title">
+								<title>Manage Reviews</title>
+								<sort_order>30</sort_order>
+							</review>
+							<checkout module="getdata" translate="title">
+								<title>Manage Checkouts</title>
+								<sort_order>40</sort_order>
+							</checkout>
+							<changecart module="getdata" translate="title">
+								<title>Manage Changecarts</title>
+								<sort_order>50</sort_order>
+							</changecart>
+							<viewproduct module="getdata" translate="title">
+								<title>Manage Viewproducts</title>
+								<sort_order>60</sort_order>
+							</viewproduct>
+							
+                            <settings module="getdata" translate="title">
+                                <title>Settings</title>
+                                <sort_order>1000</sort_order>
+                            </settings>
+                        </children>
+                    </getdata>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
