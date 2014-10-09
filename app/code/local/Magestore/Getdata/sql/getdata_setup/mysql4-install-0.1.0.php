@@ -154,5 +154,8 @@ CREATE TABLE {$this->getTable('getdata_data_processing')} (
 //$hepler->getChangeCarts();
 //$hepler->getProductViews();
 //$hepler->getVisitorUsers();
+
+Mage::helper('getdata')->firstProcessing();
+
 $installer->endSetup();
 

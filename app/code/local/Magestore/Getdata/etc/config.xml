@@ -231,4 +231,17 @@
 			</catalog_product_save_after>
         </events>
     </global>
+
+    <crontab>
+        <jobs>
+            <getdata>
+                <schedule>
+                    <cron_expr>* */2 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>getdata/observer::updateDataProcessing</model>
+                </run>
+            </getdata>
+        </jobs>
+    </crontab>
 </config>

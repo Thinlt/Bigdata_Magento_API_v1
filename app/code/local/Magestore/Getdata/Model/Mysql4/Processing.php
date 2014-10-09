@@ -20,38 +20,16 @@
  */
 
 /**
- * Getdata Index Controller
+ * Data Processing Model
  *
  * @category    Magestore
  * @package     Magestore_Getdata
  * @author      Magestore Developer
  */
-class Magestore_Getdata_IndexController extends Mage_Core_Controller_Front_Action
+class Magestore_Getdata_Model_Mysql4_Processing extends Mage_Core_Model_Mysql4_Abstract
 {
-    /**
-     * index action
-     */
-    public function indexAction()
+    public function _construct()
     {
-
-		$customerId = 143;
-		$customer = Mage::getModel('customer/customer')->load($customerId);
-
-		//$hepler = Mage::helper('getdata');
-		//$hepler->getReviews();
-
-		//$this->getProducts();
-		//$this->getUsers();
-		//$this->getReviews();
-		//$this->getVisitors();
-		//print_r($this->getCheckouts());
-
-    }
-
-    public function testAction(){
-
-        Mage::getModel('getdata/observer')->updateDataProcessing();
-
-        return;
+        $this->_init('getdata/processing', 'processing_id');
     }
 }
