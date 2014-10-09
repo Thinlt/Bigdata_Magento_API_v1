@@ -164,7 +164,7 @@ class Magestore_Getdata_Model_Observer
 			$productIds[] = $item->getProductId();
 		}
 
-		$model = Mage::getModel('getdata/checkout')
+		$model = Mage::getModel('getdata/order')
 				->setOrderId($order->getId())
 				->setUserId($visitor['customer_id'])
 				->setVisitorId($visitor['visitor_id'])
